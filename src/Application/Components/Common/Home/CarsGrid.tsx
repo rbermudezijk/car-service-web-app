@@ -14,7 +14,11 @@ import './CarsGrid.scss';
  */
 const CarsGrid = ({availableCars}: AvailableCarsState) => {
   console.log(availableCars)
-  return null;
+  return <div className="cars-grid">
+    {availableCars.map( carItem => 
+      <CarItemCard key={carItem?.carId} carItem={carItem}/>
+    )}
+  </div>
 };
 
 export default connect(

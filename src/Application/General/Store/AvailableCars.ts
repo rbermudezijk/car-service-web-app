@@ -25,10 +25,10 @@ type Payload = {
  * The reducer to available cars state section.
  */
 export function reducer (
-  mapStatus: AvailableCarsState = defaultState, 
+  mapStatus: Array<Car> = new Array<Car>(), 
   {type, data}: Payload
-): AvailableCarsState {
-  return type==='FILL_AVAILABLE_CARS' ? {availableCars: data}
+) : Array<Car> {
+  return type==='FILL_AVAILABLE_CARS' ? data
   :mapStatus;
 }
 
