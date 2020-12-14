@@ -1,0 +1,17 @@
+:root {
+  --main-color: #6200ee;
+  --c-main-color: #3700b3;
+  --secondary-color: #12908e;
+  --background-color: #d6d6d6;
+
+  background: var(--background-color);
+  /* Hide scrollbar for IE, Edge, Firefox, Chrome, Opera, Safari. */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

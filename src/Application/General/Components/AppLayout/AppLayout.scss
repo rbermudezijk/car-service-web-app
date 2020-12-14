@@ -1,0 +1,7 @@
+.app-grid {
+  display: grid;
+  grid-template-rows: 0.5fr 9.5fr;
+  grid-template-areas: 
+    "header"
+    "content";
+}

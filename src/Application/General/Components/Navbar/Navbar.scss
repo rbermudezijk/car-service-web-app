@@ -1,0 +1,19 @@
+.nav-bar {
+  grid-area: header;
+  background-color: var(--main-color);
+  width: 100vw;
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  position: sticky;
+  top:0;
+  z-index: 10;
+
+  .icon {
+    color: white;
+    font-size: 35px;
+    margin: 15px;
+  }
+}
