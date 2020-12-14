@@ -1,33 +1,25 @@
 import React, { ReactNode } from 'react';
 
+import { connect } from 'react-redux';
+
 import CarAPI        from '../../../General/WebServices/CarAPI';
 import { Navbar }    from '../../../General/Components/Navbar';
 import { AppLayout } from '../../../General/Components/AppLayout';
-import { Car }   from '../../../General/Models/Car';
-import { CarsGrid } from './CarsGrid';
+import CarsGrid      from './CarsGrid';
+import { fillAvailableCars } from '../../../General/Store/AvailableCars';
 
-type HomeState = {
-  availableCars: Array<Car>
+type HomeProps = {
+  fillAvailableCars: Function
 }
 
-export default class Home extends React.Component<{}, HomeState> {
-  
-  /**
-   * Initialize the required state.
-   */
-  constructor() {
-    super({});
-    this.state = {
-      availableCars: new Array<Car>()
-    };
-  }
+class Home extends React.Component<HomeProps, {}> {
 
   /**
    * This method fetch all available cars when component is loaded.
    */
   public async componentDidMount(): Promise<any> {
-    let availableCars = await CarAPI.getAllAvailableCars();
-    this.setState({ availableCars });
+    let cars = await CarAPI.getAllAvailableCars();
+    this.props.fillAvailableCars(cars);
   }
 
   /**
@@ -36,7 +28,12 @@ export default class Home extends React.Component<{}, HomeState> {
   public render(): ReactNode { return (
     <AppLayout>
       <Navbar/>
-      <CarsGrid cars={this.state.availableCars}/>
+      <CarsGrid/>
     </AppLayout>
   );}
 }
+
+export default connect(
+  () => ({}),
+  { fillAvailableCars }
+) (Home);

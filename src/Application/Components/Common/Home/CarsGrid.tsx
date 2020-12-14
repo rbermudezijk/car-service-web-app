@@ -1,15 +1,10 @@
 import React from 'react';
 
-import { Car }         from '../../../General/Models/Car';
-import { CarItemCard } from './CarItemCard';
-import './CarsGrid.scss';
+import { connect } from 'react-redux';
 
-/**
- * CarsGrid component properties.
- */
-type CarsGridProps = {
-  cars: Array<Car>
-};
+import { CarItemCard } from './CarItemCard';
+import { AvailableCarsState } from '../../../General/Store/AvailableCars';
+import './CarsGrid.scss';
 
 /**
  * This class represents the main content to show the available cars 
@@ -17,9 +12,12 @@ type CarsGridProps = {
  * 
  * @param {cars} param Object with array of available cars.
  */
-export const CarsGrid = ({cars}: CarsGridProps) => 
-  <div className="cars-grid">
-    {cars.map( carItem => 
-      <CarItemCard key={carItem?.carId} carItem={carItem}/>
-    )}
-  </div>;
+const CarsGrid = ({availableCars}: AvailableCarsState) => {
+  console.log(availableCars)
+  return null;
+};
+
+export default connect(
+  ({availableCars}: AvailableCarsState)=> ({availableCars}),
+  {}
+) (CarsGrid);
